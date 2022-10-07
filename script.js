@@ -1,33 +1,49 @@
-//shablon
-class Header {
-constructor(img, h1, h2) {
-this.src = img
-this.h1 = h1
-this.h2 = h2
-}
-render(x) {
-    // x- kuda otrisovyvat
-    let out = ''
-    out += `img src="${this.src}" alt="" class="logo">`
-    out +=  `<h1>${this.h1}</h1>`
-    out +=  `<h2>${this.h2}</h2>`
-    document.getElementById(x).innerHTML = out
-}
+ 
+
+
+class Header{
+    constructor(h1, h2) {
+        this.h1 = h1
+        this.h2 = h2
+    }
+    render(x) {
+        let out = ''
+        out += `<h1>${this.h1}</h1>`
+        out += `<h2>${this.h1}</h2>`
+        document.getElementById(x).innerHTML = out
+
+    }
+    static hello(a) {
+        console.log('workkkk' + a)
+    }
 }
 
-const img = 'https://cdn0.iconfinder.com/data/icons/social-media-circle-6/1024/instagram-128.png'
-
-let header = new Header(img, 'Hello', 'world')
+const header = new Header('Hello', 'hjkhjk')
+// header.hero = 'gogogo'
+header.render('header-out')
 console.log(header)
-header.render('header')
 
-// class -> object
-// metod -> risuet // render(что рисовать, куда рисовать)
 
-// const a = {
-//     key: value,
-//     key2: value,
-//     key3: function() {
+class Header2 extends Header {
+    constructor(h1, h2, hero) {
+        super(h1, h2, hero)
+        this._hero = hero
+    }
+    get hero() {
+        return this._hero
+    }
+    set hero(c) {
+        this._hero = c
+    }
+}
 
-//     }
-// }
+const header2 = new Header2('new hello', 'new site', 'ahahah')
+// header2._hero = 3.1415 BAD
+header2.hero = 'google'
+console.log(header2.hero)
+header2.render('header-out')
+
+
+console.log(header2)
+
+Header.hello('hi')
