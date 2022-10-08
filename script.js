@@ -1,49 +1,34 @@
- 
-
-
-class Header{
-    constructor(h1, h2) {
-        this.h1 = h1
-        this.h2 = h2
-    }
-    render(x) {
-        let out = ''
-        out += `<h1>${this.h1}</h1>`
-        out += `<h2>${this.h1}</h2>`
-        document.getElementById(x).innerHTML = out
-
-    }
-    static hello(a) {
-        console.log('workkkk' + a)
+let a = {
+    a1: 'object a',
+    _a3: 5,
+    a2: function() {
+        console.log(this.a1)
+        return true
+    },
+    set _a3(x) {
+        this.a3 = x
     }
 }
 
-const header = new Header('Hello', 'hjkhjk')
-// header.hero = 'gogogo'
-header.render('header-out')
-console.log(header)
-
-
-class Header2 extends Header {
-    constructor(h1, h2, hero) {
-        super(h1, h2, hero)
-        this._hero = hero
-    }
-    get hero() {
-        return this._hero
-    }
-    set hero(c) {
-        this._hero = c
-    }
+let b = {
+    a1: 'bbbbbbbb',
+    b1: 'object b'
+    
 }
+// b.__proto__ = a
+Object.setPrototypeOf(b, a)
 
-const header2 = new Header2('new hello', 'new site', 'ahahah')
-// header2._hero = 3.1415 BAD
-header2.hero = 'google'
-console.log(header2.hero)
-header2.render('header-out')
+// console.log(a)
+// console.log(b)
+// console.log(b.a2())
+// console.log(b.a1)
+// b.a1 = 55
+// console.log('----------------------------')
+// a.a3 = 77
+// console.log(a)
+// b.a3 = 88
+// console.log(b)
 
-
-console.log(header2)
-
-Header.hello('hi')
+console.log(b.a1)
+console.log(a.a1)
+console.log(b.__proto__.a1)
